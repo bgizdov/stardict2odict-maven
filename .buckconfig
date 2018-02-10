@@ -1,0 +1,28 @@
+[alias]
+    it = //:main
+
+[download]
+    in_build = true
+
+[maven_repositories]
+    central = https://repo1.maven.org/maven2
+    jcenter = https://jcenter.bintray.com/
+
+[intellij]
+    jdk_name = Java SDK 1.8
+    jdk_type = JavaSDK
+    java_module_sdk_type = JavaSDK
+    java_module_sdk_name = 1.8
+    remove_unused_libraries = true
+    module_group_name = core
+    project_compiler_output_url = build/classes
+
+[project]
+    ide = intellij
+    glob_handler = watchman
+    ignore = .git
+
+[java]
+    src_roots = java, scala
+    source_level = 8
+    target_level = 8
