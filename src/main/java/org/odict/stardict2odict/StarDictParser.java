@@ -1,4 +1,4 @@
-package org.odict.stardict2odict.stardict;
+package org.odict.stardict2odict;
 
 import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;

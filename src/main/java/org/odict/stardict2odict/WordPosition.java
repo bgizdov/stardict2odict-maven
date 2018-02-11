@@ -1,4 +1,4 @@
-package org.odict.stardict2odict.stardict;
+package org.odict.stardict2odict;
 
 /**
  * plain pojo, define the position of a word

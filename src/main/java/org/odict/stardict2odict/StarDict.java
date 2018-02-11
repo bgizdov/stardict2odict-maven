@@ -1,4 +1,4 @@
-package org.odict.stardict2odict.stardict;
+package org.odict.stardict2odict;
 
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -77,11 +77,7 @@ public class StarDict {
         String res = "";
         byte[] buf = new byte[len];
         try {
-            System.out.println(start);
-            System.out.println(len);
-            System.out.println(this.randomAccessFile.length());
             this.randomAccessFile.seek(start);
-            System.out.println(this.randomAccessFile.getFilePointer());
             int ir = this.randomAccessFile.read(buf);
             if (ir != len) {
                 System.out.println("Error occurred, not enought bytes read, wanting:" + len + ",got:" + ir);

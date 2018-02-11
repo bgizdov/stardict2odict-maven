@@ -1,4 +1,4 @@
-package org.odict.stardict2odict.stardict;
+package org.odict.stardict2odict;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
