@@ -51,8 +51,9 @@ public class ODictXMLConverter {
             }
         }
 
-        System.out.println(in_count);
-        System.out.println(out_count);
+        System.out.print("\n");
+        System.out.println(String.format("Saved %s words", in_count));
+        System.out.println(String.format("Omitted %s words", out_count));
 
         xml += "</dictionary>";
 

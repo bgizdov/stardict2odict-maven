@@ -1,13 +1,8 @@
-star-dict-parser
-================
+stardict2odict
+==============
 
-This is a Java library project for parsing StarDict dictionary files, refer <a href="https://code.google.com/p/babiloo/wiki/StarDict_format">https://code.google.com/p/babiloo/wiki/StarDict_format</a> for more information about the StarDict file format.
+This tiny utility converts StarDict dictionaries to ODict XML (ODXML), which can then be compiled to a binary ODict dictionary using [the ODict compiler](https://github.com/odict/odict). 
 
-Although the StarDict format is rather solid and concise, utilizing it in your own applications might not
-be a trivial task. Star-dict-parser can relieve you from some programming and debugging burden.
+The StarDict file format is rather convoluted and requires *multiple*, that's right, ***multiple*** files in order to run. It's also pretty poorly documented. The only documentation you'll find about it is scattered across the internet, but [here](https://code.google.com/p/babiloo/wiki/StarDict_format) is a pretty good explanation linked to from the [repo this code was based on](https://github.com/wyage/star-dict-parser) (pfff like we'd really write a StarDict parser ourselves... *please*). 
 
-It is expected to run smoothly on Java platforms, including Java SE, Android, etc.
-
-It has already powered the project <a href="https://github.com/wyage/avedict">https://github.com/wyage/avedict</a>.
-
-Wishing it be useful to you!
+We'll add more info about the API eventually, so you can, you know, actually use this library.
