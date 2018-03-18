@@ -3,17 +3,23 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.buckd" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/.git" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/buck-out" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/build" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <excludeFolder url="file://$MODULE_DIR$/.buckd" />
-      <excludeFolder url="file://$MODULE_DIR$/.git" />
-      <excludeFolder url="file://$MODULE_DIR$/buck-out" />
-      <excludeFolder url="file://$MODULE_DIR$/out" />
-      <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="//:commons-compress" level="project" />
-    <orderEntry type="library" name="//:commons-lang3" level="project" />
-    <orderEntry type="library" name="//:dictzip" level="project" />
+    <orderEntry type="library" name="//:commons-cli" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:commons-compress" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:commons-lang3" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:dictzip" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:emoji-java" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:jackson-annotations" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:jackson-core" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:jackson-databind" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:jackson-dataformat-yaml" scope="COMPILE" level="project" />
+    <orderEntry type="library" name="//:snakeyaml" scope="COMPILE" level="project" />
   </component>
 </module>

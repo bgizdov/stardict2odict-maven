@@ -21,10 +21,71 @@ remote_jar(
     hash="2d874b2ecf9de74437edcfbd5138b168e9ca0d14"
 )
 
+remote_jar(
+    name="jackson-dataformat-yaml",
+    url="mvn:com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:jar:2.9.4",
+    hash="3edaa0c22529b6c1c095f6e3cafc6d54e8709538"
+)
+
+remote_jar(
+    name="jackson-core",
+    url="mvn:com.fasterxml.jackson.core:jackson-core:jar:2.9.4",
+    hash="a9a71ec1aa37da47db168fede9a4a5fb5e374320"
+)
+
+remote_jar(
+    name="jackson-databind",
+    url="mvn:com.fasterxml.jackson.core:jackson-databind:jar:2.9.4",
+    hash="498bbc3b94f566982c7f7c6d4d303fce365529be"
+)
+
+remote_jar(
+    name="jackson-annotations",
+    url="mvn:com.fasterxml.jackson.core:jackson-annotations:jar:2.9.4",
+    hash="1380b592ad70439346b5d954ad202be048451c5a"
+)
+
+remote_jar(
+    name="snakeyaml",
+    url="mvn:org.yaml:snakeyaml:jar:1.20",
+    hash="11e7e64e621e5e43c7481bf01072a7b1597d4f03"
+)
+
+remote_jar(
+    name="emoji-java",
+    url="mvn:com.vdurmont:emoji-java:jar:4.0.0",
+    hash="b2de319e06192443ee273dd7e69d10b09ffb3442"
+)
+
+remote_jar(
+    name="json",
+    url="mvn:org.json:json:jar:20180130",
+    hash="26ba2ec0e791a32ea5dfbedfcebf36447ee5b12c"
+)
+
+remote_zipped_jar(
+    name="commons-cli",
+    url="http://mirrors.sorengard.com/apache//commons/cli/binaries/commons-cli-1.4-bin.zip",
+    hash="5d27df91a432d8f49f2ccaebd89ae6977186e4ed",
+    path="commons-cli-1.4/commons-cli-1.4"
+)
+
 ############################
 #      Actual Library      #
 ############################
-deps = ['//:commons-lang3', '//:dictzip', '//:commons-compress']
+deps = [
+    '//:commons-cli',
+    '//:commons-lang3',
+    '//:commons-compress',
+    '//:dictzip',
+    '//:emoji-java',
+    '//:jackson-annotations',
+    '//:jackson-core',
+    '//:jackson-databind',
+    '//:jackson-dataformat-yaml',
+    '//:json',
+    '//:snakeyaml'
+]
 
 java_library(
     name="main-lib",

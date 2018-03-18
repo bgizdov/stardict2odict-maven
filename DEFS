@@ -11,3 +11,23 @@ def remote_jar(name, url, hash, deps = []):
         deps=deps,
         visibility=["PUBLIC"]
     )
+
+def remote_zipped_jar(name,  url, hash, path, deps = []):
+    genrule(
+        name = name + "-nested",
+        out = name + ".jar",
+        cmd = "cp -a $(location //:" + name + "-source)/" + path + ".jar $OUT"
+    )
+    remote_file(
+        name = name + "-source",
+        url = url,
+        type = 'exploded_zip',
+        sha1 = hash
+    )
+    prebuilt_jar(
+        name = name,
+        binary_jar = ":" + name + "-nested",
+        deps=deps,
+        visibility=["PUBLIC"]
+    )
+
