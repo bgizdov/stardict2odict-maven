@@ -1,9 +1,7 @@
 package org.odict.stardict2odict;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Timer;
 
@@ -41,12 +39,11 @@ public class Main {
 
             System.out.println(EmojiParser.parseToUnicode(":book:Processing dictionary file..."));
             StarDict dict = new StarDictParser().parse(path);
-            EntryExample example = new ODictXMLConverter(dict).getExample();
-            System.out.println(
-                    String.format("Found example entry for word \"%s\": %s",
-                            example.getWord(),
-                            example.getExplanation()
-                    ));
+            List<EntryExample> example = new ODictXMLConverter(dict).getExample();
+
+            System.out.println("Found example entries:\n");
+
+            example.forEach(ex -> System.out.println(String.format("%s\n%s\n\n", ex.getWord(), ex.getExplanation())));
         } else if (numberOfArguments >= 2) {
             StopWatch sw = new StopWatch();
             sw.start();
@@ -81,7 +78,7 @@ public class Main {
             System.out.println(EmojiParser.parseToUnicode(":floppy_disk:Writing to file..."));
             String destPath = argList.get(1);
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(destPath));
+            BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(destPath), StandardCharsets.UTF_8));
             writer.write(xml);
             writer.close();
 

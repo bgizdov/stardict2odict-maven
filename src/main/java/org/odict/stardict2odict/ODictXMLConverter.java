@@ -1,6 +1,9 @@
 package org.odict.stardict2odict;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -28,11 +31,17 @@ public class ODictXMLConverter {
         return pos.getLength() > 0 ? this.dict.getWordExplanation(pos.getStartPos(), pos.getLength()) : null;
     }
 
-    public EntryExample getExample() {
-        String firstWord = (String)words.keySet().toArray()[0];
-        WordPosition position = words.get(firstWord);
-        String explanation = dict.getWordExplanation(position.getStartPos(), position.getLength());
-        return new EntryExample(firstWord, explanation);
+    public List<EntryExample> getExample() {
+        ArrayList<EntryExample> examples = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            String word = (String)words.keySet().toArray()[i];
+            WordPosition position = words.get(word);
+            String explanation = dict.getWordExplanation(position.getStartPos(), position.getLength());
+            examples.add(new EntryExample(word, explanation));
+        }
+
+        return examples;
     }
 
     private String makeAttribute(String key, String value) {
@@ -71,7 +80,7 @@ public class ODictXMLConverter {
             if (exp != null) {
                 Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
                 Matcher match = pattern.matcher(exp);
-                String entryContents = "";
+                StringBuilder entryContentsBuilder = new StringBuilder();
 
                 while(match.find()) {
                     ArrayList<String> usageAttrs = new ArrayList<>();
@@ -94,14 +103,24 @@ public class ODictXMLConverter {
 
                     String definition = this.getMatchGroup(match, rules, ConfigKeys.KEY_DEFINITION);
 
-                    entryContents += String.format(String.format("<usage %s>", String.join(" ", usageAttrs)));
+                    if (definition.trim().length() > 0) {
+                        String attrs = String.join(" ", usageAttrs).trim();
 
-                    for (String d : definition.split(config.getDelimiter())) {
-                        entryContents += String.format("<definition>%s</definition>", d.trim());
+                        if (attrs.length() > 0)
+                            entryContentsBuilder.append(String.format("<usage %s>", attrs));
+                        else entryContentsBuilder.append("<usage>");
+
+                        for (String d : definition.split(config.getDelimiter())) {
+                            String trimmed = StringEscapeUtils.escapeHtml4(d.trim());
+                            if (trimmed.length() > 0)
+                                entryContentsBuilder.append(String.format("<definition>%s</definition>", trimmed));
+                        }
+
+                        entryContentsBuilder.append("</usage>");
                     }
-
-                    entryContents += "</usage>";
                 }
+
+                String entryContents = entryContentsBuilder.toString();
 
                 if (entryContents.length() != 0) {
                     builder.append(String.format("<entry term=\"%s\"><ety>%s</ety></entry>", word, entryContents));
