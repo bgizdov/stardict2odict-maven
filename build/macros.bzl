@@ -1,11 +1,11 @@
 def remote_jar(name, url, hash, deps = []):
-    remote_file(
+    native.remote_file(
         name = name + "-source",
         out = name + "-source.jar",
         url = url,
         sha1 = hash
     )
-    prebuilt_jar(
+    native.prebuilt_jar(
         name = name,
         binary_jar = ":" + name + "-source",
         deps=deps,
@@ -13,21 +13,20 @@ def remote_jar(name, url, hash, deps = []):
     )
 
 def remote_zipped_jar(name,  url, hash, path, deps = []):
-    genrule(
+    native.genrule(
         name = name + "-nested",
         out = name + ".jar",
         cmd = "cp -a $(location //:" + name + "-source)/" + path + ".jar $OUT"
     )
-    remote_file(
+    native.remote_file(
         name = name + "-source",
         url = url,
         type = 'exploded_zip',
         sha1 = hash
     )
-    prebuilt_jar(
+    native.prebuilt_jar(
         name = name,
         binary_jar = ":" + name + "-nested",
         deps=deps,
         visibility=["PUBLIC"]
     )
-

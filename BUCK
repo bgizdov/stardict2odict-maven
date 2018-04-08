@@ -1,4 +1,4 @@
-include_defs("//DEFS")
+load("//build:macros.bzl", "remote_jar", "remote_zipped_jar")
 
 #################################
 #      Remote Dependencies      #
@@ -7,6 +7,12 @@ remote_jar(
     name="commons-lang3",
     url="mvn:org.apache.commons:commons-lang3:jar:3.7",
     hash="557edd918fd41f9260963583ebf5a61a43a6b423"
+)
+
+remote_jar(
+    name="commons-text",
+    url="mvn:org.apache.commons:commons-text:jar:1.3",
+    hash="9abf61708a66ab5e55f6169a200dbfc584b546d9"
 )
 
 remote_jar(
@@ -73,28 +79,8 @@ remote_zipped_jar(
 ############################
 #      Actual Library      #
 ############################
-deps = [
-    '//:commons-cli',
-    '//:commons-lang3',
-    '//:commons-compress',
-    '//:dictzip',
-    '//:emoji-java',
-    '//:jackson-annotations',
-    '//:jackson-core',
-    '//:jackson-databind',
-    '//:jackson-dataformat-yaml',
-    '//:json',
-    '//:snakeyaml'
-]
-
-java_library(
-    name="main-lib",
-    srcs=glob(["src/main/**/*.java"]),
-    deps=deps
-)
-
 java_binary(
     name="main",
     main_class="org.odict.stardict2odict.Main",
-    deps=["//:main-lib"]
+    deps=["//src/main:main-lib"]
 )
