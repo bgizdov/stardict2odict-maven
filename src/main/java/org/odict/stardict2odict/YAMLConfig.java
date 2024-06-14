@@ -33,4 +33,8 @@ public class YAMLConfig {
     public void setStripTags(boolean stripTags) {
         this.stripTags = stripTags;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

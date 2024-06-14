@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This is not a runnable app, refer package org.yage.dict.star please!
@@ -22,6 +23,7 @@ public class Main {
         Options options = new Options();
 
         options.addOption("c", "config", true, "YAML regex configuration file");
+        options.addOption("n", "name", true, "Inline name for the dictionary");
 
         CommandLineParser parser = new DefaultParser();
         CommandLine cmd = parser.parse( options, args);
@@ -62,8 +64,16 @@ public class Main {
                 System.exit(1);
             }
 
+            String name = null;
+            if (cmd.hasOption("name")) {
+                name = cmd.getOptionValue("name");
+            }
+
             ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
             YAMLConfig config = mapper.readValue(new File(configPath), YAMLConfig.class);
+            if (Objects.nonNull(name)) {
+                config.setName(name);
+            }
             String originPath = argList.get(0);
 
             if (!new File(originPath).exists()) {

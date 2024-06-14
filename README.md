@@ -55,3 +55,16 @@ Now, to convert the file to ODXML using the following command:
 ```bash
 $ stardict2odict.jar ./zh_en.tar.bz2 ./zh_en.xml --config config.yml 
 ```
+
+Option stripTags to remove HTML tags from definitions.
+
+```bash
+name: Babylon Chinese - English
+delimiter: ,
+stripTags: true
+```
+
+Use inline dictionary name:
+```bash
+$ stardict2odict.jar ./zh_en.tar.bz2 ./zh_en.xml --config config.yml --name "Babylon Chinese - English"
+```
