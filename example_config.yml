@@ -1,6 +1,7 @@
 ---
 name: Babylon Korean - English
 regex: <font color="blue">([a-z]+?)\.</font>\s*(.*?)$
+stripTags: true
 match:
   pos: 1
   definition: 2
