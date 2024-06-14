@@ -7,13 +7,20 @@ import org.apache.commons.lang3.ArrayUtils;
 import org.dict.zip.DictZipInputStream;
 import org.dict.zip.RandomAccessInputStream;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.RandomAccessFile;
+import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.nio.channels.ReadableByteChannel;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * StarDict dictionary file parser
@@ -154,7 +161,7 @@ public class StarDictParser {
      *
      * @param buf 使用全局的，之后可以去掉它
      * @param len cbuf最多只有这么长
-     * @throws UnsupportedEncodingException
+     * @throws java.io.UnsupportedEncodingException
      */
     private void parseByteArray(byte buf[], int len) throws UnsupportedEncodingException {
         for (; mark < len; ) {

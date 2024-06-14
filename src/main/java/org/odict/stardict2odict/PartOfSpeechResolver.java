@@ -1,8 +1,8 @@
 package org.odict.stardict2odict;
 
-import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PartOfSpeechResolver {
     static private Map<String, String> res;

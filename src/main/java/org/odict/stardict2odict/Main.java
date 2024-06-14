@@ -1,16 +1,18 @@
 package org.odict.stardict2odict;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.util.List;
-import java.util.Timer;
-
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.vdurmont.emoji.EmojiParser;
 import org.apache.commons.cli.*;
 import org.apache.commons.lang3.time.StopWatch;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
 
 /**
  * This is not a runnable app, refer package org.yage.dict.star please!
